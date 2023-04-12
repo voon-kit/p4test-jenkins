@@ -17,7 +17,7 @@ pipeline {
     }
     post {
         always{
-            bat "py updateAMI.py --STREAM ${STREAM} --CHANGELIST ${CHANGELIST} --BUILDSTATUS ${currentBuild.currentResult} -c --rt-port 3289 --server-address localhost"
+            sh "python updateAMI.py --STREAM ${STREAM} --CHANGELIST ${CHANGELIST} --BUILDSTATUS ${currentBuild.currentResult} -c --rt-port 3289 --server-address localhost"
         }
     }
 }
