@@ -7,6 +7,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                sh "echo ${params.STREAM} ${params.CHANGELIST}"
                 sh "python updateAMI.py --STREAM ${params.STREAM} --CHANGELIST ${params.CHANGELIST} --BUILDSTATUS BUILDING -c --rt-port 1289 --server-address flux.3forge.net"
                 buildName "#${env.BUILD_NUMBER}: ${params.STREAM} @${params.CHANGELIST}"
                 echo 'OK!!'
