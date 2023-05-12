@@ -8,7 +8,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh "echo ${params.STREAM} ${params.CHANGELIST}"
-                sh "python updateAMI.py --STREAM ${params.STREAM} --CHANGELIST ${params.CHANGELIST} --BUILDSTATUS BUILDING -c --rt-port 1289 --server-address flux.3forge.net"
+                sh "python3 updateAMI.py --STREAM ${params.STREAM} --CHANGELIST ${params.CHANGELIST} --BUILDSTATUS BUILDING -c --rt-port 1289 --server-address flux.3forge.net"
                 buildName "#${env.BUILD_NUMBER}: ${params.STREAM} @${params.CHANGELIST}"
                 echo 'OK!!'
                 sleep(time: 30, unit: 'SECONDS') //simulate building time of 30 seconds
