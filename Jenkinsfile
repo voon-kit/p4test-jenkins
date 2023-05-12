@@ -8,7 +8,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh "echo ${params.STREAM} ${params.CHANGELIST}"
-                sh "python3 updateAMI.py --STREAM ${params.STREAM} --CHANGELIST ${params.CHANGELIST} --BUILDSTATUS BUILDING -c --rt-port 1289 --server-address flux.3forge.net"
+                sh "python3 updateAMI.py --STREAM ${params.STREAM} --CHANGELIST ${params.CHANGELIST} --BUILDSTATUS BUILDING -c --rt-port 6289 --server-address flux.3forge.net"
                 buildName "#${env.BUILD_NUMBER}: ${params.STREAM} @${params.CHANGELIST}"
                 echo 'OK!!'
                 sleep(time: 30, unit: 'SECONDS') //simulate building time of 30 seconds
@@ -18,7 +18,7 @@ pipeline {
     }
     post {
         always{
-            sh "python3 updateAMI.py --STREAM ${params.STREAM} --CHANGELIST ${params.CHANGELIST} --BUILDSTATUS ${currentBuild.currentResult} -c --rt-port 1289 --server-address flux.3forge.net"
+            sh "python3 updateAMI.py --STREAM ${params.STREAM} --CHANGELIST ${params.CHANGELIST} --BUILDSTATUS ${currentBuild.currentResult} -c --rt-port 6289 --server-address flux.3forge.net"
         }
     }
 }
