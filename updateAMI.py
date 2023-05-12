@@ -22,7 +22,7 @@ CHANGELIST = args.CHANGELIST
 BUILDSTATUS = args.BUILDSTATUS
 STREAM = args.STREAM
 
-adapter.send_obj('Branches', {'buildStatus':"{BUILDSTATUS}", 'lastChange':CHANGELIST, 'Branch':"{STREAM}"})
+adapter.send_obj('Branches', {'buildStatus':f"\"{BUILDSTATUS}\"", 'lastChange':CHANGELIST, 'Branch':f"\"{STREAM}\""})
 adapter.cleanup()
 
 sys.exit(0)
