@@ -18,7 +18,7 @@ pipeline {
     }
     post {
         always{
-            sh "python updateAMI.py --STREAM ${params.STREAM} --CHANGELIST ${params.CHANGELIST} --BUILDSTATUS ${currentBuild.currentResult} -c --rt-port 1289 --server-address flux.3forge.net"
+            sh "python3 updateAMI.py --STREAM ${params.STREAM} --CHANGELIST ${params.CHANGELIST} --BUILDSTATUS ${currentBuild.currentResult} -c --rt-port 1289 --server-address flux.3forge.net"
         }
     }
 }
